@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const str = "qwq"
+const str = 'qwq'
 </script>
 
 <style scoped lang="scss">
@@ -13,7 +13,6 @@ const str = "qwq"
   width: 200px;
   height: 30px;
   background-color: aquamarine;
-
   h1 {
     font-size: 20px;
   }
