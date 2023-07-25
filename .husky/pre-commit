@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-pnpm run format
-
 . "$(dirname -- "$0")/_/husky.sh"
+pnpm run format
 

@@ -1,9 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+imp
 
 createApp(App).mount('#app')
-
-const qwq = function q() {
-  console.log('我是修改的内容')
-}
-qwq()
