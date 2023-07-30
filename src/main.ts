@@ -1,5 +1,25 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-imp
+import App from '@/App.vue'
+import router from '@/router'
+import pinia from '@/store'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import '@/style/index.scss'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-expect-error
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+// svg
+import 'virtual:svg-icons-register'
+// 全局组件
+import globalComponent from '@/components/index.ts'
+// permission
+import '@/permission'
+const app = createApp(App)
 
-createApp(App).mount('#app')
+app.use(ElementPlus, {
+  locale: zhCn,
+})
+app.use(router)
+app.use(pinia)
+app.use(globalComponent)
+app.mount('#app')

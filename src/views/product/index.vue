@@ -1,9 +1,9 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h1>品牌管理</h1>
   </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped lang="scss"></style>
+<style scoped></style>
