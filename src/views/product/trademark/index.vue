@@ -278,10 +278,14 @@ const confirmDelete = async (id: number) => {
   const res = await reqDeleteTrademark(id)
   if (res.code === 200) {
     ElMessage.success('删除成功')
-    // 当前页的品牌数量是否不等于1,真则留在当前页刷新,假则返回上一页(watch监听刷新)
-    trademarkList.value.length !== 1 ? getTrademarkList() : (pageNo.value -= 1)
+    // 当前页的品牌数量是否不等于1或者已经是第一页,真则留在当前页刷新,假则返回上一页(watch监听刷新)
+    if (trademarkList.value.length !== 1 || pageNo.value === 1) {
+      getTrademarkList()
+    } else {
+      pageNo.value -= 1
+    }
   } else {
-    ElMessage.error('删除失败')
+    ElMessage.error('删除失败!')
   }
 }
 </script>

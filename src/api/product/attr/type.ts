@@ -25,6 +25,7 @@ export interface attr_data {
   categoryId: number | string
   categoryLevel: number
   attrValueList: attrValueList
+  attrIdAndValueId?: string
 }
 
 //数组attrvaluelist列表的数据

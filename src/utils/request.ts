@@ -22,6 +22,20 @@ request.interceptors.response.use(
     return response.data
   },
   (error) => {
+    // axios返回的错误(如超时等)
+    if (
+      error.code === 'ECONNABORTED' ||
+      error.message === 'Network Error' ||
+      error.message.includes('timeout')
+    ) {
+      ElMessage({
+        message: '请求超时，请稍后重试',
+        type: 'error',
+        duration: 3 * 1000,
+      })
+    }
+
+    // 后端接口返回的错误
     let msg = ''
     const status = error.response.status
     switch (status) {
@@ -44,7 +58,7 @@ request.interceptors.response.use(
       type: 'error',
       message: msg,
     })
-    return Promise.reject(error)
+    return Promise.reject('响应出现错误' + error)
   },
 )
 

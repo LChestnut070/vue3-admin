@@ -168,6 +168,7 @@ watch(
     getAttrList()
   },
 )
+
 // 跳转到其他页时清空仓库数据
 onUnmounted(() => {
   cateStore.$reset()
@@ -191,6 +192,8 @@ const addAttrBtn = () => {
     categoryId: cateStore.cate3Id,
     categoryLevel: 3,
   })
+  // 清空id
+  delete attrParams.id
 }
 // 点击修改属性的按钮
 const updateAttrBtn = (row: attr_data) => {
@@ -267,11 +270,11 @@ const toEdit = (row: attrValue, index: number) => {
 const save = async () => {
   const res = await reqAddOrUpdateAttr(attrParams)
   if (res.code === 200) {
-    getAttrList()
     scene.value = 0
-    ElMessage.success(attrParams.id ? '修改成功' : '添加成功')
+    ElMessage.success(attrParams.id ? '修改成功!' : '添加成功!')
+    getAttrList()
   } else {
-    ElMessage.error(attrParams.id ? '修改失败' : '添加失败')
+    ElMessage.error(attrParams.id ? '修改失败!' : '添加失败!')
   }
 }
 </script>
