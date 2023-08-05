@@ -178,8 +178,7 @@ watch(
 watch(
   () => limit.value,
   () => {
-    pageNo.value = 1
-    getTrademarkList()
+    pageNo.value === 1 ? getTrademarkList() : (pageNo.value = 1)
   },
 )
 

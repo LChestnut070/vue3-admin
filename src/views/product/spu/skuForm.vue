@@ -161,6 +161,12 @@ const initSkuForm = async (
   cate3Id: number | string,
   spuinfo: spu_recordsObj,
 ) => {
+  // 清空数据
+  skuFormParams.skuName = ''
+  skuFormParams.price = ''
+  skuFormParams.weight = ''
+  skuFormParams.skuDesc = ''
+  // 初始化数据
   skuFormParams.category3Id = cate3Id
   skuFormParams.spuId = spuinfo.id as number
   skuFormParams.tmId = spuinfo.tmId
