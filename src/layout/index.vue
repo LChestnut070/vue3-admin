@@ -15,10 +15,12 @@
         </el-menu>
       </el-scrollbar>
     </div>
+
     <!-- 顶栏 -->
     <div class="layout_tabbar" :class="{ fold: layoutSettingStore.fold }">
       <TabBar></TabBar>
     </div>
+
     <!-- 主要区域 -->
     <div class="layout_main" :class="{ fold: layoutSettingStore.fold }">
       <Main></Main>

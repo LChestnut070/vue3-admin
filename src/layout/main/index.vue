@@ -12,10 +12,12 @@ import { nextTick, ref, watch } from 'vue'
 
 const flag = ref(true)
 const layoutSettingStore = useLayoutSettingStore()
+
 //监听刷新状态
 watch(
   () => layoutSettingStore.refresh,
   () => {
+    // 通过v-if进行重载
     flag.value = false
     nextTick(() => {
       flag.value = true
