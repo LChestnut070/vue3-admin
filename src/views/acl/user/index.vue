@@ -11,6 +11,7 @@
           <el-input
             placeholder="请输入要搜索的用户名"
             v-model="searchParams"
+            @change="searchByUser"
           ></el-input>
         </el-form-item>
         <el-form-item>
@@ -264,7 +265,7 @@ const pageNo = ref<number>(1)
 // 每页数量
 const limit = ref<number>(5)
 // 总数目
-const total = ref<number>(100)
+const total = ref<number>(0)
 // 用户列表
 const userList = ref<userRecords_obj[]>([])
 // 角色列表
@@ -333,7 +334,7 @@ const getUserList = async () => {
     searchParams.value,
   )
   if (res.code === 200) {
-    total.value = res.data.total
+    total.value = res.data.total as number
     userList.value = res.data.records
     loading.value = false
   } else {
@@ -400,7 +401,9 @@ const deleteSomeUser = async () => {
   const res: any = await reqDeleteSomeUser(params)
   if (res.code === 200) {
     ElMessage.success('删除多个用户成功!')
-    pageNo.value === 1 ? getUserList() : (pageNo.value = 1)
+    pageNo.value === 1 || userList.value.length > 1
+      ? getUserList()
+      : (pageNo.value -= 1)
   } else {
     ElMessage({
       type: 'error',
