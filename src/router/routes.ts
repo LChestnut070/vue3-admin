@@ -1,3 +1,4 @@
+// 常量路由
 export const constantRoutes = [
   {
     path: '/login',
@@ -43,6 +44,19 @@ export const constantRoutes = [
     },
   },
   {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/404/index.vue'),
+    meta: {
+      title: '404',
+      show: false,
+    },
+  },
+]
+
+// 异步路由
+export const asyncRoute = [
+  {
     path: '/acl',
     name: 'Acl',
     component: () => import('@/layout/index.vue'),
@@ -55,7 +69,7 @@ export const constantRoutes = [
     children: [
       {
         path: '/acl/user',
-        name: 'Acl',
+        name: 'User',
         component: () => import('@/views/acl/user/index.vue'),
         meta: {
           title: '用户管理',
@@ -137,15 +151,10 @@ export const constantRoutes = [
       },
     ],
   },
-  {
-    path: '/404',
-    name: '404',
-    component: () => import('@/views/404/index.vue'),
-    meta: {
-      title: '404',
-      show: false,
-    },
-  },
+]
+
+// 任意路由
+export const anyRoute = [
   {
     path: '/:pathMatch(.*)*',
     name: 'Any',
