@@ -115,6 +115,7 @@ const dialogFormVisible = ref<boolean>(false)
 const loading = ref<boolean>(false)
 // 控制按钮的加载效果
 const buttonLoading = ref<boolean>(false)
+// 新增|修改菜单权限的参数
 const editPermissionParams = ref<allPermission_req>({
   pid: 0,
   name: '',

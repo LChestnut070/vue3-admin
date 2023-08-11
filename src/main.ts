@@ -16,6 +16,8 @@ import 'virtual:svg-icons-register'
 import globalComponent from '@/components/index.ts'
 // permission
 import '@/permission'
+// 自定义指令
+import { isHasBtn } from './directive/ishasbtn'
 const app = createApp(App)
 
 app.use(ElementPlus, {
@@ -24,4 +26,5 @@ app.use(ElementPlus, {
 app.use(router)
 app.use(pinia)
 app.use(globalComponent)
+isHasBtn(app)
 app.mount('#app')

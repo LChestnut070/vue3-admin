@@ -35,7 +35,8 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         await userStore
           .userInfo()
           .then(() => {
-            next()
+            // 获取用户信息后放行
+            next({ ...to, replace: true })
           })
           .catch(async () => {
             ElMessage({
